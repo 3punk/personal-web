@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evan's Parallax</title>
+    <link rel="stylesheet" type="text/css" href="design.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rancho&display=swap');
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body
+{
+    overflow-x: hidden;
+    background: #fff;
+    min-height: 100vh;
+}
+
+#header
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10000;
+}
+
+#header .logo
+{
+    color: #094b65;
+    font-weight: 700;
+    font-size: 2em;
+    text-decoration: none;
+}
+
+#header ul
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#header ul li
+{
+    list-style: none;
+    margin-left: 20px;
+}
+
+#header ul li a
+{
+    text-decoration: none;
+    padding: 6px 15px;
+    color: #094b65;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+#header ul li a:hover
+{
+    background: #094b65;
+    color: #fff;
+}
+
+section
+{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section::before
+{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to top, #094b65, transparent);
+    z-index: 10
+}
+
+section img
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+section #text
+{
+    position: absolute;
+    color: #094b65;
+    font-size: 10vw;
+    text-align: center;
+    line-height: 0.55em;
+    font-family: 'Rancho', cursive;
+    transform: translateY(-50%);
+}
+
+section #text span
+{
+    font-size: 0.20em;
+    letter-spacing: 2px;
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
+}
+
+#btn
+{
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 30px;
+    background: #fff;
+    color: #094b65;
+    font-size: 1.2em;
+    font-weight: 500;
+    letter-spacing: 2px;
+    border-radius: 40px;
+    transform: translateY(100px);
+    transition: 0.3s;
+}
+
+#btn:hover
+{
+    background: #d8d8d8;
+}
+
+.sec
+{
+    position: relative;
+    padding: 100px;
+    background: #094b65;
+}
+
+.sec::before
+{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to top, #043042, transparent);
+    z-index: 10
+}
+
+.sec h2
+{
+    font-size: 3.5em;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.sec p
+{
+    font-size: 1em;
+    color: #fff;
+    text-align: justify;
+}
+
+::-webkit-scrollbar
+{
+    width: 15px;
+}
+
+::-webkit-scrollbar-thumb
+{
+    background: linear-gradient(#eaeaea, #6e7371);
+    border-radius: 7px;
+}
+
+::-webkit-scrollbar-track
+{
+    background-color: #094b65;
+}
+
+.scrollTop
+{
+    position: fixed;
+    bottom: 800px;
+    right: 40px;
+    width: 60px;
+    height: 60px;
+    background:#eaeaea url(assets/up.png);
+    border-radius: 50%;
+    background-size: 40px;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    z-index: 100000;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.scrollTop.active
+{
+    bottom: 40px;
+    visibility: visible;
+    opacity: 0.6;
+}
+
+.scrollTop.active:hover
+{
+    background-color: rgba(49,56,63,255);
+    transition: 0.3s;
+}
+
+.sec1
+{
+    position: relative;
+    background: #043042;
+    font-size: 25px;
+    min-height: 100vh;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+}
+
+.sec1 h2
+{
+    font-size: 3.5em;
+    color: #fff;
+    margin-bottom: 700px;
+    margin-left: 60px;
+}
+
+.bubble
+{
+    margin-bottom: 300px;
+    background: #05c4b2;
+    color: #fff;
+    padding: 0.5em 1em;
+    position: relative;
+    border-radius: 0 0.30em 0.30em 0.30em;
+    box-shadow: 7px 30px 40px #012723;
+    right: 155px;
+}
+
+.bubble::after
+{
+    content: '';
+    position: absolute;
+    border: 0.5em solid transparent;
+    border-top-color: #05c4b2;
+    border-right-color: #05c4b2;
+    right: 100%;
+    top: 0%;
+}
+
+.bubble p 
+{
+    font-weight: 300;
+    font-size: 20px;
+}
+
+.bubble1
+{
+    background: #ffd900;
+    color: #fff;
+    padding: 0.5em 1em;
+    position: relative;
+    border-radius: 0.30em 0 0.30em 0.30em;
+    box-shadow: 7px 30px 40px #012723;
+    margin-bottom: -300px;
+    margin-right: 69px;
+    transition: 0.5s;
+}
+
+.bubble1::after
+{
+    content: '';
+    position: absolute;
+    border: 0.5em solid transparent;
+    border-top-color: #ffd900;
+    border-left-color: #ffd900;
+    left: 100%;
+    top: 0%;
+}
+
+.bubble1 p 
+{
+    font-weight: 300;
+    font-size: 20px;
+}
+
+.sec1::before
+{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to top, #142249, transparent);
+    z-index: 10
+}
+
+.profile-section
+{
+    width: 100%;
+    height: 100vh;
+    background: #142249;
+    background-position: center;
+    background-size: cover;
+    justify-content: center;
+    margin: auto;
+    align-items: center;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    display: flex;
+}
+
+.main ul
+{
+    margin-left: 0 auto;
+
+}
+.main li
+{
+    list-style: none;
+    margin: 10px;
+    display: inline-block;
+    transition: 0.4s;
+}
+.main li a
+{
+    color: #eaeaea;
+    text-decoration: none;
+    width: 245px;
+    font-size: 2.5em;
+}
+
+.main li:hover
+{
+    transform: translateY(-10px);
+}
+
+.main
+{
+    position: absolute;
+    width: 450px;
+    background-color: rgba(42, 41, 41, 0.6);
+    align-items: center;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.img
+{
+    background-image: url(assets/killerqueenxbate.jfif);
+    background-color: #eaeaea;
+    background-size: cover;
+    border-radius: 100px;
+    width: 150px; 
+    height: 150px;
+    margin-top: 35px;
+    margin-left: 150px;
+}
+
+.main h1
+{
+    text-align: center;
+    font-size: 40px;
+    margin: 0;
+    font-weight: bold;
+    color: #f0ff00;
+}
+
+.main h1 span
+{
+    transition: 0.5s;
+}
+
+.main h1 span:hover
+{
+    color: orange;
+}
+
+.main .text
+{
+    font-size: 20px;
+    letter-spacing: 2px;
+    font-weight: 100;
+    margin: 0;
+    color: #eaeaea;
+}
+
+.main p
+{
+    margin: 0 auto;
+    padding-top: 20px;
+    width: 450px;
+    height: auto;
+    color: #eaeaea;
+    text-align: center;
+    font-size: 17px;
+}
+
+.main p a 
+{
+    text-decoration: none;
+    color: #fff;
+    font-size: 23px;
+}
+
+.main p a span
+{
+    color: #fff;
+    transition: 0.5s;
+}
+
+.main p a span:hover
+{
+    color: #afb6b6;
+}
+    </style>
+</head>
+<body>
+    <header id="header">
+        <a href="#" class="logo">Schmetterling</a>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#sec">About</a></li>
+            <li><a href="#sec1">FAQ</a></li>
+            <li><a href="#profile">Profile</a></li>
+        </ul>
+    </header>
+    <section>
+        <h2 id="text"><span>Let's save Nature</span><br>Environment</h2>
+        <img src="assets/bird1.png" id="bird1">
+        <img src="assets/bird2.png" id="bird2">
+        <img src="assets/forest.png" id="forest">
+        <a href="#sec" id="btn">Begin</a>
+        <img src="assets/rocks.png" id="rocks">
+        <img src="assets/water.png" id="water">
+
+    </section>
+    <div class="sec" id="sec">
+        <h2>Schmetterling</h2>
+        <p>Schmetterling is a web where nature lovers can share everything about nature's condition. Place where to discuss about good and beautiful environment for nature.<br>
+            A clean and safe natural environment refers to an environment that is free from pollution, waste, and other harmful substances that may affect the 
+            health and well-being  of living organisms. It is an environment where natural resources such as air, water, and soil are protected and preserved for future generations.<br>
+            A clean and safe natural environment is essential for the survival of human beings and other living organisms. It provides essential resources such as food, water, 
+            and  shelter, and supports biodiversity by providing habitats for various species of plants and animals.<br>
+            To maintain a clean and safe natural environment, it is important to reduce pollution, conserve natural resources, and promote sustainable practices. 
+            This can be achieved through various means such as reducing greenhouse gas emissions, using renewable energy sources, promoting conservation efforts, and 
+            practicing responsible waste management.<br>
+            Protecting the environment is not only important for the health and well-being of living organisms, but it is also crucial for economic development and 
+            social progress. A clean and safe natural environment promotes sustainable development, which supports economic growth while ensuring the protection 
+            and preservation of natural resources for future generations.<br>
+            Another reason why keeping a clean and safe natural environment is important is climate regulation. The natural environment plays a crucial role in regulating 
+            the Earth's climate. Trees and other vegetation absorb carbon dioxide from the atmosphere, which helps to mitigate climate change. The oceans absorb heat and 
+            carbon dioxide, which helps to regulate the Earth's temperature. By protecting the natural environment, we are helping to mitigate the impacts of climate change 
+            and ensure a more stable climate for future generations.<br>
+            In addition to the environmental benefits, a clean and safe natural environment provides many economic benefits. The natural environment provides resources such 
+            as food, timber, and minerals, and supports industries such as tourism and recreation. A healthy environment can also support economic growth and prosperity, 
+            providing jobs and economic opportunities.<br>
+            Furthermore, a clean and safe natural environment is essential for human health and well-being. It provides clean air to breathe and clean water to drink, which 
+            are essential for human survival. A clean environment also supports healthy ecosystems, which are critical for the health of humans and other living organisms.<br>
+            Finally, the natural environment is often an important part of cultural and spiritual traditions. Many cultures have deep connections to the land and the natural 
+            environment, and preserving these environments helps to preserve these traditions. By protecting the natural environment, we are also preserving cultural heritage 
+            and ensuring that future generations can learn from and appreciate these traditions.<br>
+            Overall, a clean and safe natural environment is critical for the health and well-being of the planet and its inhabitants. It is essential that we take steps to 
+            protect and preserve the natural environment for future generations, both for the environmental benefits and for the economic, health, and cultural benefits that 
+            a healthy environment provides.</p>
+    </div>
+    <div class="sec1" id="sec1">
+        <h2>FAQ</h2>
+        <div class="bubble">
+            <p>
+           <b>Q</b> : What is the natural environment?<br>
+           <b>A</b> : The natural environment refers to the physical, biological, <br>and chemical factors that make up the Earth's ecosystems, 
+            <br>including air, water, soil, and living organisms.</p>
+        </div>
+        <div class="bubble1">
+            <p><b>Q</b> : Why is the natural environment important?<br>
+            <b>A</b> : The natural environment is important because it <br>provides essential resources such as food, water, and shelter, 
+            supports biodiversity, regulates the Earth's climate,<br> and provides economic, health, and cultural benefits.</p>
+        </div>
+    </div>
+    <div class="profile-section" id="profile">
+        <div class="main" id="main">
+            <div class="img"></div>
+            <h1><span>Aether</span></h1>
+            <div class="text"><strong>Web Dev - Beginner</strong></div>
+            <p>Hello, this is Aether.<br/>This Parallax website is my third projects.<br/> I've spend a week to done this.<br/>
+               Currently, I'm struggling with JavaScript<br> and Back End Stuff.<br/>Sincerely, Ather.
+               <br/><br/><strong><a href="#"><span>Explore Parallax</span></a></strong><br/><br/>Contact me: </p>
+            <ul>
+                <li><a href="https://Instagram.com/van_ewd" target="_blank"><ion-icon name="logo-instagram"></ion-icon></a></li>
+                <li><a href="https://steamcommunity.com/id/EpunkSlayer/" target="_blank"><ion-icon name="logo-steam"></ion-icon></a></li>
+                <li><a href="https://github.com/3punk" target="_blank"><ion-icon name="logo-github"></ion-icon></a></li>
+            </ul>
+        </div>
+        </div>
+
+    <script>
+        let text = document.getElementById('text');
+        let bird1 = document.getElementById('bird1');
+        let bird2 = document.getElementById('bird2');
+        let btn = document.getElementById('btn');
+        let rocks = document.getElementById('rocks');
+        let forest = document.getElementById('forest');
+        let water = document.getElementById('water');
+        let header = document.getElementById('header');
+
+        window.addEventListener('scroll', function(){
+            let value = window.scrollY;
+
+            text.style.top = 50 + value * -0.5 + '%';
+            bird1.style.top = value * -1.5 + 'px';
+            bird1.style.left = value * 2 + 'px';
+            bird2.style.top = value * -1.5 + 'px';
+            bird2.style.left = value * -5 + 'px';
+            btn.style.marginTop = value * 1.5 + 'px';
+            rocks.style.top = value * -0.12 + 'px';
+            forest.style.top = value * 0.25 + 'px';
+            header.style.top = value * 0.5 + 'px';
+        })
+    </script>
+
+    <div class="scrollTop" onclick="scrollToTop();"></div>
+    <script type="text/javascript">
+        window.addEventListener('scroll', function(){
+            var scroll = document.querySelector('.scrollTop');
+            scroll.classList.toggle("active", window.scrollY > 500)
+        })
+
+        function scrollToTop(){
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            })
+        }
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</html>

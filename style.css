@@ -1,0 +1,185 @@
+*
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+html, body
+{
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+#revelation
+{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    z-index: 1000;
+    background: linear-gradient(45deg, #d2001a, #7462ff, #f48e21, #23d5ab);
+    background-size: 300% 300%;
+    animation: color 12s ease-in-out infinite;
+}
+
+@keyframes color 
+{
+    0%{
+        background-position: 0 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%
+    {
+        background-position: 0 50%;
+    }
+}
+
+#zindex
+{
+    position: relative;
+    z-index: 1;
+}
+
+#content
+{
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+h3
+{
+    color: #fff;
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    margin: 0;
+}
+
+img
+{
+    border-radius: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 250px;
+    height: 250px;
+    border-style: solid;
+    border-width: 5px;
+    color: #fff;
+}
+
+#skip
+{
+    height: 20px;
+}
+
+.header
+{
+    font-size: 55px;
+    line-height: 75px;
+    white-space: nowrap;
+    color: #fff;
+}
+
+.header span
+{
+    color: #d2001a;
+    transition: 0.2s;
+}
+
+.header span:hover
+{
+    color: #630706;
+}
+
+#skipped
+{
+    height: 10px;
+}
+
+h2
+{
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    margin: 0;
+    font-weight: bold;
+}
+
+p
+{
+    color: #fff;
+    font-weight: bold;
+}
+
+.frontend
+{
+    color: #88fc03;
+    transition: 0.5s;
+}
+
+.frontend:hover
+{
+    color: #23d5ab;
+}
+
+.link
+{
+    text-decoration: none;
+    color: aquamarine;
+    transition: 0.3s;
+}
+
+.link:hover
+{
+    color: #23d5ab;
+}
+
+.menu li
+{
+    margin: 4px 2px;
+    padding: 8px;
+    display: inline-block;
+    list-style: none;
+    transition: 0.5s;
+    transition-delay: calc(0.1s * var(--i));
+}
+
+.menu li a
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    color: var(--clr);
+    border: 2px solid var(--clr);
+    border-radius: 50%;
+    font-size: 1.5em;
+    transition: 1s;
+}
+
+.menu li a:hover
+{
+    transition: 0s;
+    background: var(--clr);
+    color: #333;
+    box-shadow: 0 0 10px var(--clr),
+    0 0 30px var(--clr),
+    0 0 50px var(--clr);
+}
